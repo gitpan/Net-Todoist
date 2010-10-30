@@ -17,4 +17,4 @@ requires:
   LWP::UserAgent: 0
 resources:
   repository: http://github.com/fayland/perl-Net-Todoist
-version: 0.01
+version: 0.02

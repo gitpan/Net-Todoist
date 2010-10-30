@@ -2,7 +2,7 @@ NAME
     Net::Todoist - Todoist API
 
 VERSION
-    version 0.01
+    version 0.02
 
 SYNOPSIS
         use Net::Todoist;
@@ -84,7 +84,7 @@ DESCRIPTION
 
    updateProject
         my $project = $nt->updateProject(
-            proejct_id => $proejct_id, # required
+            project_id => $project_id, # required
             
         name => $name, # optional
             color => $color, # optional
@@ -123,7 +123,7 @@ DESCRIPTION
 
    addItem
         my $item = $nt->addItem(
-            proejct_id => $proejct_id, # required
+            project_id => $project_id, # required
             content => $content, # required
             date_string => $date_string, # optional
             priority => $priority, # optional

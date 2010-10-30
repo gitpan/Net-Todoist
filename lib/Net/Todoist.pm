@@ -1,7 +1,7 @@
 package Net::Todoist;
 
 BEGIN {
-    $Net::Todoist::VERSION = '0.01';
+    $Net::Todoist::VERSION = '0.02';
 }
 
 # ABSTRACT: Todoist API
@@ -209,13 +209,13 @@ sub updateProject {
     defined $self->{token}
       or croak
       'token must be passed to ->new, or call ->login, ->register before this.';
-    defined $args->{proejct_id} or croak 'proejct_id is required.';
+    defined $args->{project_id} or croak 'project_id is required.';
 
     my $resp = $self->{ua}->post(
         'https://todoist.com/API/updateProject',
         [
             token      => $self->{token},
-            proejct_id => $args->{proejct_id},
+            project_id => $args->{project_id},
             $args->{name}   ? ( order  => $args->{name} )   : (),
             $args->{color}  ? ( color  => $args->{color} )  : (),
             $args->{indent} ? ( indent => $args->{indent} ) : (),
@@ -371,8 +371,8 @@ sub getItemsById {
 
     $item_ids = [$item_ids] unless ref $item_ids eq 'ARRAY';
 
-    my $url = "http://todoist.com/API/getItemsById?token=$self->{token}&ids=["
-      . join( ',', @$item_ids ) . ']';
+    my $url = "http://todoist.com/API/getItemsById?token=$self->{token}&ids="
+      . join( ',', @$item_ids );
     $url .= '&js_date=1' if $js_date;
     my $resp = $self->{ua}->get($url);
     unless ( $resp->is_success ) {
@@ -392,14 +392,14 @@ sub addItem {
     defined $self->{token}
       or croak
       'token must be passed to ->new, or call ->login, ->register before this.';
-    defined $args->{proejct_id} or croak 'proejct_id is required.';
+    defined $args->{project_id} or croak 'project_id is required.';
     defined $args->{content}    or croak 'content is required.';
 
     my $resp = $self->{ua}->post(
         'https://todoist.com/API/addItem',
         [
             token      => $self->{token},
-            proejct_id => $args->{proejct_id},
+            project_id => $args->{project_id},
             content    => $args->{content},
             $args->{date_string} ? ( date_string => $args->{date_string} ) : (),
             $args->{priority}    ? ( priority    => $args->{priority} )    : (),
@@ -510,7 +510,7 @@ sub deleteItems {
       or croak
       'token must be passed to ->new, or call ->login, ->register before this.';
     @item_ids = @{ $item_ids[0] }
-      if scalar(@item_ids) == 2 and ref $item_ids[0] eq 'ARRAY';
+      if scalar(@item_ids) == 1 and ref $item_ids[0] eq 'ARRAY';
 
     my $url = "http://todoist.com/API/deleteItems?token=$self->{token}&ids=["
       . join( ',', @item_ids ) . ']';
@@ -552,7 +552,7 @@ sub uncompleteItems {
       or croak
       'token must be passed to ->new, or call ->login, ->register before this.';
     @item_ids = @{ $item_ids[0] }
-      if scalar(@item_ids) == 2 and ref $item_ids[0] eq 'ARRAY';
+      if scalar(@item_ids) == 1 and ref $item_ids[0] eq 'ARRAY';
 
     my $url =
       "http://todoist.com/API/uncompleteItems?token=$self->{token}&ids=["
@@ -608,7 +608,7 @@ Net::Todoist - Todoist API
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
@@ -706,7 +706,7 @@ Returns the timezones Todoist supports.
 =head3 updateProject
 
     my $project = $nt->updateProject(
-        proejct_id => $proejct_id, # required
+        project_id => $project_id, # required
         
         name => $name, # optional
         color => $color, # optional
@@ -753,7 +753,7 @@ Returns the timezones Todoist supports.
 =head3 addItem
 
     my $item = $nt->addItem(
-        proejct_id => $proejct_id, # required
+        project_id => $project_id, # required
         content => $content, # required
         date_string => $date_string, # optional
         priority => $priority, # optional
