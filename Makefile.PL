@@ -21,9 +21,10 @@ my %WriteMakefileArgs = (
   'NAME' => 'Net::Todoist',
   'PREREQ_PM' => {
     'JSON::XS' => '0',
-    'LWP::UserAgent' => '0'
+    'LWP::UserAgent' => '0',
+    'Test::More' => '0.88'
   },
-  'VERSION' => '0.02',
+  'VERSION' => '0.03',
   'test' => {
     'TESTS' => 't/*.t'
   }

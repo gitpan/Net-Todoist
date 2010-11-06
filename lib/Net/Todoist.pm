@@ -1,7 +1,7 @@
 package Net::Todoist;
 
 BEGIN {
-    $Net::Todoist::VERSION = '0.02';
+    $Net::Todoist::VERSION = '0.03';
 }
 
 # ABSTRACT: Todoist API
@@ -608,7 +608,7 @@ Net::Todoist - Todoist API
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
