@@ -18,4 +18,4 @@ requires:
   Test::More: 0.88
 resources:
   repository: http://github.com/fayland/perl-Net-Todoist
-version: 0.03
+version: 0.04
