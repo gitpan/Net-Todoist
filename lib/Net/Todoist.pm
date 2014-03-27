@@ -1,8 +1,5 @@
 package Net::Todoist;
-
-BEGIN {
-    $Net::Todoist::VERSION = '0.04';
-}
+$Net::Todoist::VERSION = '0.05';
 
 # ABSTRACT: Todoist API
 
@@ -135,8 +132,7 @@ sub getProjects {
       or croak
       'token must be passed to ->new, or call ->login, ->register before this.';
 
-    my $resp =
-      $self->{ua}
+    my $resp = $self->{ua}
       ->get("http://todoist.com/API/getProjects?token=$self->{token}");
     unless ( $resp->is_success ) {
         $errstr = $resp->status_line;
@@ -308,8 +304,7 @@ sub deleteLabel {
       or croak
       'token must be passed to ->new, or call ->login, ->register before this.';
 
-    my $resp =
-      $self->{ua}->get(
+    my $resp = $self->{ua}->get(
         "http://todoist.com/API/deleteLabel?token=$self->{token}&name=$name");
     unless ( $resp->is_success ) {
         $errstr = $resp->status_line;
@@ -602,13 +597,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Net::Todoist - Todoist API
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 

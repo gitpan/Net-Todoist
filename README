@@ -2,14 +2,14 @@ NAME
     Net::Todoist - Todoist API
 
 VERSION
-    version 0.04
+    version 0.05
 
 SYNOPSIS
         use Net::Todoist;
-        
-    my $nt = Net::Todoist->new( token => $token );
-        
-    # or use login to get the token
+    
+        my $nt = Net::Todoist->new( token => $token );
+    
+        # or use login to get the token
         my $nt = Net::Todoist->new();
         my $user = $nt->login($email, $pass) or die "login failed: " . $nt->errstr;
         # or use register to set the token
@@ -20,8 +20,8 @@ SYNOPSIS
             password  => 'guessitplz',
             timezone  => "GMT +8:00"
         ) or die "Can't register: " . $nt->errstr;
-        
-    ## updateUser
+    
+        ## updateUser
 
 DESCRIPTION
     read <http://todoist.com/API/help> for more details.
@@ -85,8 +85,8 @@ DESCRIPTION
    updateProject
         my $project = $nt->updateProject(
             project_id => $project_id, # required
-            
-        name => $name, # optional
+        
+            name => $name, # optional
             color => $color, # optional
             indent => $indent, # optional
         ) or die "Can't updateProject: " . $nt->errstr;
@@ -133,8 +133,8 @@ DESCRIPTION
    updateItem
         my $item = $nt->updateItem(
             id => $item_id, # required
-            
-        content => $content, # optional
+        
+            content => $content, # optional
             date_string => $date_string, # optional
             priority => $priority, # optional
             indent => $indent, # optional
