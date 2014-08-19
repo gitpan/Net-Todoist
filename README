@@ -1,8 +1,8 @@
 NAME
-    Net::Todoist - Todoist API
+    Net::Todoist - interface to the API for Todoist (a to-do list service)
 
 VERSION
-    version 0.05
+    version 0.06
 
 SYNOPSIS
         use Net::Todoist;
@@ -24,7 +24,12 @@ SYNOPSIS
         ## updateUser
 
 DESCRIPTION
-    read <http://todoist.com/API/help> for more details.
+    This module provide an interface to the API for the Todoist
+    <http://todoist.com/>. Todoist is a to-do list service that can be
+    accessed from a web interface or dedicated desktop or mobile clients.
+    The basic service is free, but you can pay to get additional features.
+
+    Read <http://todoist.com/API/help> for more details.
 
   METHODS
    CONSTRUCTION
@@ -168,6 +173,11 @@ DESCRIPTION
             as_count => 0, # optional
             js_date  => 0, # optional
         )
+
+SEE ALSO
+    <http://todoist.com> - home page for Todoist.
+
+    <http://todoist.com/API/help> - documentation for the API.
 
 AUTHOR
     Fayland Lam <fayland@gmail.com>

@@ -1,7 +1,7 @@
 package Net::Todoist;
-$Net::Todoist::VERSION = '0.05';
+$Net::Todoist::VERSION = '0.06';
 
-# ABSTRACT: Todoist API
+# ABSTRACT: interface to the API for Todoist (a to-do list service)
 
 use strict;
 use warnings;
@@ -601,11 +601,11 @@ __END__
 
 =head1 NAME
 
-Net::Todoist - Todoist API
+Net::Todoist - interface to the API for Todoist (a to-do list service)
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -629,7 +629,13 @@ version 0.05
 
 =head1 DESCRIPTION
 
-read L<http://todoist.com/API/help> for more details.
+This module provide an interface to the API for the
+L<Todoist|http://todoist.com/>.
+Todoist is a to-do list service that can be accessed from
+a web interface or dedicated desktop or mobile clients.
+The basic service is free, but you can pay to get additional features.
+
+Read L<http://todoist.com/API/help> for more details.
 
 =head2 METHODS
 
@@ -802,6 +808,12 @@ Returns the timezones Todoist supports.
         as_count => 0, # optional
         js_date  => 0, # optional
     )
+
+=head1 SEE ALSO
+
+L<http://todoist.com> - home page for Todoist.
+
+L<http://todoist.com/API/help> - documentation for the API.
 
 =head1 AUTHOR
 
